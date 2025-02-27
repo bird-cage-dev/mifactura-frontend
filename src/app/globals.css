@@ -17,6 +17,7 @@
 
 }
 
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -28,4 +29,14 @@ body {
   color: var(--foreground);
   background: var(--primary-gradient);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .btn {
+    background: linear-gradient(to right, #2C938E 21%, #0A5967 77%);
+  }
+
+  .btn:hover {
+    opacity: 0.96;
+  }
 }
