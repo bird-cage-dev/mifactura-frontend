@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Nunito } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,7 +11,10 @@ const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
 });
-
+const nunito = Nunito({
+    variable: "--font-nunito",
+    subsets: ['latin']
+})
 export const metadata: Metadata = {
     title: {
         template: '%s | miFactura',
@@ -34,7 +37,7 @@ export default function RootLayout({
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} ${nunito.variable} antialiased`}
             >
                 {children}
             </body>

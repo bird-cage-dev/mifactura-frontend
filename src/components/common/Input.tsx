@@ -34,7 +34,7 @@ export const Input = ({ label, value, placeholder, name, handleChange, type = "t
                 placeholder={placeholder}
                 onChange={handleChange}
                 required={required}
-                className="border-2 border-white rounded-lg h-9 outline-none pl-7"
+                className="border-2 border-white rounded-lg h-9 outline-none pl-7 input"
             />
         </div>
     )

@@ -12,7 +12,7 @@ export const Button = ({ text, handleClick, type, className = "" }: Props) => {
         <button
             onClick={handleClick}
             type={type}
-            className={clsx("p-2 rounded cursor-pointer font-bold text-white shadow-[2px_1px_10px_black] btn z-10", className)}
+            className={clsx("p-2 cursor-pointer font-bold text-white btn z-10", className)}
         >
             {text}
         </button>

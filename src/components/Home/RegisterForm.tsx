@@ -30,7 +30,7 @@ const identificationTypes: Option[] = [
         value: 'ce'
     }
 ]
-export const FormRegister = () => {
+export const RegisterForm = () => {
     const { form, handleChange } = useForm(initialForm);
     const { name, identification, identificationType, email, phone, password, confirmPassword } = form;
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

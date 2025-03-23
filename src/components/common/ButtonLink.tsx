@@ -8,7 +8,7 @@ type Props = {
 }
 export const ButtonLink = ({ text, to, className }: Props) => {
     return (
-        <Link href={to} className={clsx("p-2 rounded cursor-pointer font-bold text-white shadow-[2px_1px_10px_black] btn", className)}>
+        <Link href={to} className={clsx("cursor-pointer font-bold text-white btn btn-link", className)}>
             {text}
         </Link>
     )
