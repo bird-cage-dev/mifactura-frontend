@@ -7,16 +7,24 @@
 
 :root {
   /* --background: #ffffff; */
-  --foreground: #171717;
-  --blue: #1D7874;
-  --gray1: #DADADA;
-  --gray2: #817A7A;
-  --blue-dark: #0A5967;
-  --yellow: #D7D72C;
-  --gradient: linear-gradient(to right, #2C938E 21%, #0A5967 77%);
-
+  --foreground: #FFFFFF;
+  --background-gradient: linear-gradient(-152deg, #2C938E 21%, #0A5967 77%);
 }
 
+@theme {
+  --color-primary-blue: #1D7874;
+  --color-primary-gray: #DADADA;
+  --color-secondary-gray: #817A7A;
+  --color-primary-blue-dark: #0A5967;
+  --color-primary-yellow: #D7D72C;
+  --gradient-background-gradient: linear-gradient(-152deg, #2C938E 21%, #0A5967 77%);
+}
+
+@layer components {
+  .home {
+    background: var(--background-gradient);
+  }
+}
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -27,16 +35,23 @@
 
 body {
   color: var(--foreground);
-  background: var(--primary-gradient);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer components {
+  .control-bar {
+    cursor: pointer;
+  }
+
   .btn {
-    background: linear-gradient(to right, #2C938E 21%, #0A5967 77%);
+    background: var(--background-gradient);
   }
 
   .btn:hover {
     opacity: 0.96;
+  }
+
+  .image {
+    clip-path: url(#my-image-background);
   }
 }
