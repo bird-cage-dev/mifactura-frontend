@@ -3,18 +3,29 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-nunito: var(--font-nunito);
 }
 
 :root {
   /* --background: #ffffff; */
-  --foreground: #171717;
-  --blue: #1D7874;
-  --gray1: #DADADA;
-  --gray2: #817A7A;
-  --blue-dark: #0A5967;
-  --yellow: #D7D72C;
-  --gradient: linear-gradient(to right, #2C938E 21%, #0A5967 77%);
+  --foreground: #FFFFFF;
+  --background-gradient: linear-gradient(-152deg, #2C938E 21%, #0A5967 77%);
+}
 
+@theme {
+  --color-primary-blue: #1D7874;
+  --color-primary-gray: #DADADA;
+  --color-secondary-gray: #817A7A;
+  --color-ternary-gray: #ABABAB;
+  --color-primary-blue-dark: #0A5967;
+  --color-primary-yellow: #D7D72C;
+  --gradient-background-gradient: linear-gradient(-152deg, #2C938E 21%, #0A5967 77%);
+}
+
+@layer components {
+  .home {
+    background: var(--background-gradient);
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -26,6 +37,38 @@
 
 body {
   color: var(--foreground);
-  background: var(--primary-gradient);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito);
+}
+
+@layer components {
+  .control-bar {
+    cursor: pointer;
+  }
+
+  .btn {
+    border-radius: 8px;
+    background-color: var(--color-primary-blue);
+    box-shadow: #00000040 0px 2px 10px;
+    width: 11rem;
+    height: 3rem;
+  }
+
+  .btn-link {
+    display: inline-block;
+    text-align: center;
+    padding-top: 0.9rem;
+  }
+
+  .btn:hover {
+    opacity: 0.96;
+  }
+
+  .image {
+    clip-path: url(#my-image-background);
+  }
+
+  .status-bar {
+    background: var(--background-gradient);
+  }
+
 }
