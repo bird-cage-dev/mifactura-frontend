@@ -21,7 +21,9 @@ export default function Dashboard() {
   return (
     <div className="relative flex flex-col h-screen w-screen overflow-hidden">
       <div className="home fixed top-0 left-0 z-10 flex items-center px-4 h-[126px] w-full bg-[#0A5967] text-white">
-        <FontAwesomeIcon icon={faCircleUser} className="text-[50px]" />
+        <div className="flex justify-center items-center w-[50px] h-[50px]">
+          <FontAwesomeIcon icon={faCircleUser} className="text-[50px]" />
+        </div>
         <div className="ml-3">
           <p className="text-lg font-bold">Hola, (Usuario)</p>
           <p className="text-sm">Has ahorrado: ($0)</p>
