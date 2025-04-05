@@ -11,11 +11,11 @@ export default function Home() {
         </h3>
         <ButtonLink text="Crear cuenta" to="/register" className="relative top-64 left-[30%]" />
       </div>
-      <Link href={'/login'} className="absolute bottom-1 right-2 font-bold text-xl hover:underline">
+      <Link href="/login" className="absolute bottom-1 right-2 font-bold text-xl hover:underline">
         Ya tienes cuenta?
       </Link>
       <ButtonGoogle />
       
     </div>
-  );
+  )
 }
