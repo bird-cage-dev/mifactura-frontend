@@ -1,3 +1,4 @@
+import { ButtonGoogle } from "@/components/common/ButtonGoogle";
 import { ButtonLink } from "@/components/common/ButtonLink";
 import Link from "next/link";
 
@@ -13,6 +14,8 @@ export default function Home() {
       <Link href={'/login'} className="absolute bottom-1 right-2 font-bold text-xl hover:underline">
         Ya tienes cuenta?
       </Link>
+      <ButtonGoogle />
+      
     </div>
   );
 }
