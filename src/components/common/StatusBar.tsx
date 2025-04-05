@@ -1,25 +1,35 @@
+"use client"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Back } from "./Back"
-import { faGear, faBell } from "@fortawesome/free-solid-svg-icons"
+import { faGear, faBell, faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
-import clsx from "clsx"
+import { useRouter } from "next/navigation"
+import useStatusBar from "@/hooks/useStatusBar"
+import { HEADER_HEIGHT } from "@/utils/constants/layout"
 
-type Props = {
-  title: string;
-  back?: string;
-}
+export const StatusBar = () => {
+  // Deleted clsx is not nesary, can be archived on just contaned string
+  const { getTitle } = useStatusBar()
+  const router = useRouter()
 
-export const StatusBar = ({ title, back }: Props) => (
-  <div className={clsx("w-full flex items-center justify-between py-4 px-2 fixed top-0 left-0", "status-bar")}>
-    <Back to={back || "/"} className="my-0 static" />
-    <div className="font-bold text-2xl">{title}</div>
-    <div className="flex gap-2">
-      <Link href="/notifications">
-        <FontAwesomeIcon icon={faBell} className="text-xl" />
-      </Link>
-      <Link href="/configurations">
-        <FontAwesomeIcon icon={faGear} className="text-xl" />
-      </Link>
+  return (
+    <div
+      style={{ height: HEADER_HEIGHT }}
+      className="w-full flex items-center justify-between py-4 sticky top-0 left-0 status-bar px-4"
+    >
+      {/* <Back to={} className="my-0 static" /> */}
+      <div className="relative   text-2xl my-4 inline-block" onClick={() => router.back()}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </div>
+      <div className="font-bold text-2xl">{getTitle()}</div>
+      <div className="flex gap-4">
+        <Link href="/notifications">
+          <FontAwesomeIcon icon={faBell} className="text-xl" />
+        </Link>
+        <Link href="/configurations">
+          <FontAwesomeIcon icon={faGear} className="text-xl" />
+        </Link>
+      </div>
     </div>
-  </div>
-)
+  )
+}
