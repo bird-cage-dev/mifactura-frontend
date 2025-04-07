@@ -29,10 +29,11 @@ export const Slider = ({ children }: Props) => {
   }
 
   return (
-    <div className="overflow-x-hidden border-[3px] border-primary-blue relative h-28 rounded-2xl">
-      <FontAwesomeIcon icon={faChevronLeft} className="absolute left-4 top-12 z-20" onClick={() => {
-        handleChangeSlide(-1)
-      }}
+    <div className="overflow-x-hidden border-[2px] border-primary-blue relative h-28 rounded-2xl">
+      <FontAwesomeIcon icon={faChevronLeft} className="absolute left-4 top-12 z-20"
+        onClick={() => {
+          handleChangeSlide(-1)
+        }}
       />
       <div className="overflow-x-visible flex h-full duration-300" style={{ transform: `translateX(${-currentSlide * 100}%)` }}>
         {
@@ -45,9 +46,10 @@ export const Slider = ({ children }: Props) => {
           )
         }
       </div>
-      <FontAwesomeIcon icon={faChevronRight} className="absolute right-4 top-12 z-20" onClick={() => {
-        handleChangeSlide(1)
-      }}
+      <FontAwesomeIcon icon={faChevronRight} className="absolute right-4 top-12 z-20"
+        onClick={() => {
+          handleChangeSlide(1)
+        }}
       />
     </div>
   )
