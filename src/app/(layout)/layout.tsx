@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { MobileMenu } from "@/components/common/MobileMenu"
-import MainHeader from "@/components/common/MainHeader";
+import MainHeader from "@/components/common/MainHeader"
 
 export const metadata: Metadata = {
   title: "Dashboard"
