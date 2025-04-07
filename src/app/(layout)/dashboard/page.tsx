@@ -1,44 +1,21 @@
 "use client"
 
-import { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { FacturaItem } from "@/components/Invoices/FacturaItem"
 import Link from "next/link"
+import { Slider } from "@/components/common/Slider"
+import Image from "next/image"
 
-const slides = ["Foto 1", "Foto 2", "Foto 3"]
+const slides = ["https://placehold.co/398x112.png", "https://placehold.co/398x112.png", "https://placehold.co/398x112.png"]
 
 export default function Dashboard() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % slides.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length)
-  }
-
   return (
     <div className="relative flex flex-col h-[calc(100vh-126px)]  w-screen overflow-hidden">
       <div className="flex-grow bg-white w-full p-4">
-        <div className="relative w-full h-[150px] flex items-center justify-center bg-white rounded-2xl border-2 border-[#0A5967] shadow-xl overflow-hidden">
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 text-gray-700 text-xl p-2 rounded-full"
-            type="button"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-          <div className="text-lg font-bold text-primary-blue">{slides[currentSlide]}</div>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 text-gray-700 text-xl p-2 rounded-full"
-            type="button"
-          >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
-        </div>
+        <Slider>
+          {slides.map((slide, index) => (
+            <Image key={index} src={slide} alt={slide} width={398} height={112} />
+          ))}
+        </Slider>
 
         {/* TODO: Add this to the dashboard */}
         {/* <div className="flex justify-between mt-4">

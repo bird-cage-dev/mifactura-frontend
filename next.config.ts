@@ -6,6 +6,13 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "placehold.co",
+      },
+    ],
+  },
 }
 
 export default nextConfig
