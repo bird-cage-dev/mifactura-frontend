@@ -5,7 +5,7 @@ import { FormEvent, useCallback } from "react"
 import { Input } from "../common/Input"
 import { InputWithSelect, Option } from "../common/InputWithSelect"
 import { Button } from "../common/Button"
-import { auth } from "@/lib/auth"
+import { signUp, signIn } from "@/server/user"
 
 const initialForm = {
   identification: "",
@@ -54,16 +54,16 @@ export const RegisterForm = () => {
 
     console.log("Ok", { form })
 
-    const res = await auth.api.signUpEmail({
-      body: {
-        name,
-        email,
-        password,
-        identification,
-        identificationType,
-        phoneNumber: phone
-      }
+    const res = await signUp({
+      name,
+      email,
+      password,
+      identification,
+      identificationType,
+      phoneNumber: phone
     })
+
+    console.log("Ok", { res })
   }, [form])
 
   return (
