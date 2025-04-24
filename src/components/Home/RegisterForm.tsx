@@ -1,10 +1,11 @@
 "use client"
 
 import { useForm } from "@/hooks/useForm"
-import { FormEvent } from "react"
+import { FormEvent, useCallback } from "react"
 import { Input } from "../common/Input"
 import { InputWithSelect, Option } from "../common/InputWithSelect"
 import { Button } from "../common/Button"
+import { auth } from "@/lib/auth"
 
 const initialForm = {
   identification: "",
@@ -38,11 +39,32 @@ export const RegisterForm = () => {
   const { form, handleChange } = useForm(initialForm)
   const { name, identification, identificationType, email, phone, password, confirmPassword } = form
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const {
+      identification,
+      identificationType,
+      name,
+      email,
+      phone,
+      password,
+      confirmPassword // TODO: validate password match
+    } = form
 
     console.log("Ok", { form })
-  }
+
+    const res = await auth.api.signUpEmail({
+      body: {
+        name,
+        email,
+        password,
+        identification,
+        identificationType,
+        phoneNumber: phone
+      }
+    })
+  }, [form])
 
   return (
     <form onSubmit={handleSubmit} className="w-11/12 m-auto flex flex-col gap-3">
