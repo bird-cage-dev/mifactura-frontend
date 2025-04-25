@@ -33,16 +33,6 @@ export const RegisterForm = () => {
   const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const {
-      identification,
-      identificationType,
-      name,
-      email,
-      phone,
-      password,
-      confirmPassword
-    } = form
-
     if (password !== confirmPassword) {
       toast.error("Las contraseñas no coinciden")
       return
@@ -58,15 +48,15 @@ export const RegisterForm = () => {
         phoneNumber: phone
       })
 
-      toast.success("¡Registro exitoso!")
-
-      setTimeout(() => {
-        router.push("/dashboard")
-      }, 2000)
+      toast.success("¡Registro exitoso!", {
+        onClose: () => {
+          router.push("/dashboard")
+        }
+      })
 
     } catch (error) {
       console.error("Error al registrar:", error)
-      toast.error("Correo electronico ya registrado. Intenta de nuevo con otro correo.")
+      toast.error("Correo electrónico ya registrado. Intenta de nuevo con otro correo.")
     }
   }, [form, router])
 
