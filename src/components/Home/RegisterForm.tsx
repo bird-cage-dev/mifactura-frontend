@@ -2,10 +2,12 @@
 
 import { useForm } from "@/hooks/useForm"
 import { FormEvent, useCallback } from "react"
+import { useRouter } from "next/navigation"
 import { Input } from "../common/Input"
 import { InputWithSelect, Option } from "../common/InputWithSelect"
 import { Button } from "../common/Button"
-import { signUp, signIn } from "@/server/user"
+import { signUp } from "@/server/user"
+import { toast } from "react-toastify"
 
 const initialForm = {
   identification: "",
@@ -18,25 +20,14 @@ const initialForm = {
 }
 
 const identificationTypes: Option[] = [
-  {
-    id: "identification-type-cc",
-    text: "CC",
-    value: "cc"
-  },
-  {
-    id: "identification-type-ti",
-    text: "TI",
-    value: "ti"
-  },
-  {
-    id: "identification-type-ce",
-    text: "CE",
-    value: "ce"
-  }
+  { id: "identification-type-cc", text: "CC", value: "cc" },
+  { id: "identification-type-ti", text: "TI", value: "ti" },
+  { id: "identification-type-ce", text: "CE", value: "ce" }
 ]
 
 export const RegisterForm = () => {
   const { form, handleChange } = useForm(initialForm)
+  const router = useRouter()
   const { name, identification, identificationType, email, phone, password, confirmPassword } = form
 
   const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
@@ -49,22 +40,35 @@ export const RegisterForm = () => {
       email,
       phone,
       password,
-      confirmPassword // TODO: validate password match
+      confirmPassword
     } = form
 
-    console.log("Ok", { form })
+    if (password !== confirmPassword) {
+      toast.error("Las contraseñas no coinciden")
+      return
+    }
 
-    const res = await signUp({
-      name,
-      email,
-      password,
-      identification,
-      identificationType,
-      phoneNumber: phone
-    })
+    try {
+      const res = await signUp({
+        name,
+        email,
+        password,
+        identification,
+        identificationType,
+        phoneNumber: phone
+      })
 
-    console.log("Ok", { res })
-  }, [form])
+      toast.success("¡Registro exitoso!")
+
+      setTimeout(() => {
+        router.push("/dashboard")
+      }, 2000)
+
+    } catch (error) {
+      console.error("Error al registrar:", error)
+      toast.error("Correo electronico ya registrado. Intenta de nuevo con otro correo.")
+    }
+  }, [form, router])
 
   return (
     <form onSubmit={handleSubmit} className="w-11/12 m-auto flex flex-col gap-3">
@@ -74,7 +78,7 @@ export const RegisterForm = () => {
         value={identification}
         selectValue={identificationType}
         handleChange={handleChange}
-        label="Identificacion"
+        label="Identificación"
         options={identificationTypes}
       />
       <Input handleChange={handleChange} name="name" label="Nombre" value={name} />
