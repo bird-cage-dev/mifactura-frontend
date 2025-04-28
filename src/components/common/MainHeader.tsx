@@ -30,7 +30,7 @@ const MainHeader = async () => {
         <Link href="/notifications">
           <FontAwesomeIcon icon={faBell} className="text-xl" />
         </Link>
-        <Link href="/configurations">
+        <Link href="/user">
           <FontAwesomeIcon icon={faGear} className="text-xl" />
         </Link>
       </div>
