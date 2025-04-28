@@ -1,3 +1,6 @@
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 import type { Metadata } from "next"
 import { Geist, Geist_Mono as GeistMono, Nunito } from "next/font/google"
 import { unstable_ViewTransition as ViewTransition } from "react"
@@ -45,6 +48,8 @@ export default function RootLayout({
         <ViewTransition>
           {children}
         </ViewTransition>
+
+        <ToastContainer position="top-right" autoClose={3000} />
       </body>
     </html>
   )
