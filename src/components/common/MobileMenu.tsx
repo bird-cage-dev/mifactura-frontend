@@ -10,10 +10,10 @@ export const MobileMenu = () => (
     className="w-full flex items-center justify-center absolute bottom-0 left-0 bg-primary-blue py-4 px-8"
   >
     <div className="flex items-center justify-between w-full">
-      <Link href="/">
+      <Link href="/"> 
         <FontAwesomeIcon icon={faChartSimple} className="text-xl" />
       </Link>
-      <Link href="/">
+      <Link href="/user">
         <FontAwesomeIcon icon={faUser} className="text-xl" />
       </Link>
     </div>
