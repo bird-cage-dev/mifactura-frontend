@@ -1,21 +1,30 @@
-"use client"
+"use client";
 
-import { MobileMenu } from "@/components/common/MobileMenu"
-import { authClient } from "@/lib/auth-client"
-import { useRouter } from "next/navigation"
+import { MobileMenu } from "@/components/common/MobileMenu";
+import { useRouter } from "next/navigation";
 
 export default function UserView() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleLogout = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/login")
-        },
-      },
-    })
-  }
+    try {
+      const res = await fetch("http://localhost:3000/v1/api/auth/sign-out", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (res.ok) {
+
+        localStorage.removeItem("userId");
+
+        router.push("/login");
+      } else {
+        console.error("Error al cerrar sesión:", res.status);
+      }
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   return (
     <div className="relative flex flex-col h-[calc(100vh-126px)] w-screen">
@@ -38,5 +47,5 @@ export default function UserView() {
         </div>
       </div>
     </div>
-  )
+  );
 }
