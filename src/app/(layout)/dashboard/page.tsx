@@ -1,6 +1,6 @@
 "use client"
 
-import { FacturaItem } from "@/components/Invoices/FacturaItem"
+import { FacturaItem } from "@/components/Invoices/components/FacturaItem"
 import Link from "next/link"
 import { Slider } from "@/components/common/Slider"
 import Image from "next/image"

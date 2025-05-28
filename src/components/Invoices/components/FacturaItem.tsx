@@ -7,7 +7,7 @@ type FacturaItemProps = {
   detail: string;
   amount: string;
   date: string;
-  id: number;
+  id: string;
 }
 
 export const FacturaItem = ({ company, detail, amount, date, id }: FacturaItemProps) => {

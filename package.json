@@ -2,12 +2,12 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+"scripts": {
+  "dev": "next dev -p 3001 --turbopack",
+  "build": "next build",
+  "start": "next start -p 3001",
+  "lint": "next lint"
+},
   "dependencies": {
     "@better-fetch/fetch": "^1.1.18",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
